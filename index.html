@@ -1,7 +1,8 @@
 <input type=text id=txt>
 <button onclick=start()>start testing</button>
-<img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="console.log('test')">
-
+<img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="done();">
+<div id=link>
+</div>
 
 <script>
 function start() {
@@ -14,7 +15,11 @@ async function getAgain() {
 }
 var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 
-
+   
+function done() {
+ var link = document.getElementById('link');
+  link.insertAdjacentHTML('beforeend', "<a href='http://sssscomic.com/comic.php'>GO TO COMIC!</a>");
+}
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
@@ -24,6 +29,7 @@ async function testalert() {
   alert("test"); 
   
   
+ 
 }
 
 </script>
