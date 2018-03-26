@@ -1,22 +1,16 @@
 <input type=text id=txt>
-<img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="console.log('test')" height=100 width=100>
-
-
-
-
+<button onclick=start()>start testing</button>
+<img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="console.log('test')">
 
 
 <script>
-var breaker = false;
 function start() {
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 }
 async function getAgain() {
-  if (breaker == true) {return} else {
-await sleep(1000);
+ await sleep(1000);
   document.getElementById("img").src = document.getElementById("img").src;
   console.log("loaded");
-  }
 }
 var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 
@@ -24,4 +18,12 @@ var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').v
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+async function testalert() {
+  await sleep(5000);
+  alert("test"); 
+  
+  
+}
+
 </script>
