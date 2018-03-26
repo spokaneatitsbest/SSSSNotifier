@@ -9,7 +9,7 @@
   if (Notification.permission !== "granted")
     Notification.requestPermission();
 
-  var notification = new Notification("New Comic", {
+  var notification = new Notification(comicNum, {
     icon: 'https://c.disquscdn.com/uploads/forums/283/2042/avatar92.jpg?1392836164',
     body: "",
   });
@@ -47,7 +47,7 @@ var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').v
 
    
 function done() {
- var comic = document.getElementById('txt');
+ var comic = document.getElementById('txt').value;
    notification_api(comic);
 }
 function sleep(ms) {
