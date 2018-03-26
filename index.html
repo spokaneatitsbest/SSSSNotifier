@@ -1,3 +1,33 @@
+<script>
+  
+  function notification_api() {
+  if (!Notification) {
+    alert('Notification!'); 
+    return;
+  }
+
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+
+  var notification = new Notification('NEW COMIC!', {
+    icon: 'https://a.disquscdn.com/uploads/users/1360/1267/avatar92.jpg?1426693178',
+    body: "",
+  });
+
+  notification.onclick = function () {
+    window.open("http://sssscomic.com/comic.php");      
+  };
+}
+
+</script>
+
+
+
+
+
+
+
+
 <input type=text id=txt>
 <button onclick=start()>start testing</button>
 <img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="done();" width=10px height=10px>
@@ -7,6 +37,8 @@
 <script>
 function start() {
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
+   var link = document.getElementById('link');
+  link.innerHTML = null;
 }
 async function getAgain() {
  await sleep(1000);
@@ -25,7 +57,7 @@ function sleep(ms) {
 }
 
 async function testalert() {
-  await sleep(5000);
+  await sleep(300000);
   alert("test"); 
   
   
