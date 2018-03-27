@@ -32,22 +32,28 @@
 <button onclick=start()>start testing</button>
 
 <img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="done();" width=10px height=10px>
-<input type=text id=myText>
+
 </div>
 
 <script>
-
+  
 function start() {
-  var logger = 0;
+  
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 
 }
+  
 async function getAgain() {
  await sleep(300000);
-  document.getElementById("myText").value = logger;
-  logger = logger+1;
+  var currentdate = new Date(); 
+var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
   document.getElementById("img").src = document.getElementById("img").src;
-  console.log("loaded");
+  console.log("loaded " + datetime);
 }
 var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 
