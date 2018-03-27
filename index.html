@@ -53,10 +53,10 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getSeconds();
 				return datetime;
 }
-
 var num1;
+function oninit() {
 if (Cookies.get('Latest') !== null) {
-	num1 = Cookies.get('Latest');
+num1 = Cookies.get('Latest');
 	
 } else {
 
@@ -64,15 +64,17 @@ num1 = prompt("current comic number?")
 Cookies.set('Latest', num1);
 start();
 }
-    
+}
 function start() {
   console.log(date());
-  document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + num1 + '.jpg';
+  console.log('start');
+  document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + Cookies.get('Latest') + '.jpg';
 
 }
   
 async function getAgain() {
  await sleep(300000);
+	console.log('getagain async');
 console.log(date() + " loaded");
  document.getElementById("img").src = document.getElementById("img").src;
 }
@@ -80,9 +82,10 @@ console.log(date() + " loaded");
    
 function done() {
  var comic = num1;
- num1 = num1++;
- Cookies.set('Latest', num1);
- notification_api(comic);
+ num1 = num1 + 1;
+ Cookies.set('Latest ', num1 );
+console.log('done' + num1 + Cookies.get('Latest'));
+// notification_api(comic);
  start();
 }
 
