@@ -47,7 +47,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-  document.getElementById("logBox").innerHTML = "<p>" + datetime + "</p>";
+  document.getElementById("logBox").insertAdjacentHTML('beforeend', datetime + "<br>");
   console.log(datetime);
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 }
@@ -61,7 +61,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-   document.getElementById("logBox").innerHTML = "<p>" + datetime + "</p>";
+   document.getElementById("logBox").insertAdjacentHTML('beforeend', 'Loaded' + datetime + "<br>");
   document.getElementById("img").src = document.getElementById("img").src;
   console.log("loaded " + datetime);
 }
