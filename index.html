@@ -4,9 +4,24 @@
   </title>
 </head>
   
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+  
+  function notification_api(comicNum) {
+  if (!Notification) {
+    alert('Notification!'); 
+    return;
+  }
+  if (Notification.permission !== "granted")
+    Notification.requestPermission();
+  var notification = new Notification(comicNum, {
+    icon: 'https://c.disquscdn.com/uploads/forums/283/2042/avatar92.jpg?1392836164',
+    body: "",
+  });
+  notification.onclick = function () {
+    window.open("http://sssscomic.com/comic.php");      
+  };
+}
+</script>
 
 
 
@@ -24,76 +39,44 @@
 
 <script>
   
-function notification_api(comicNum) {
-  if (!Notification) {
-    alert('Notification!'); 
-    return;
-  }
-
-  if (Notification.permission !== "granted")
-    Notification.requestPermission();
-
-  var notification = new Notification(comicNum, {
-    icon: 'https://c.disquscdn.com/uploads/forums/283/2042/avatar92.jpg?1392836164',
-    body: "",
-  });
-
-  notification.onclick = function () {
-    window.open("http://sssscomic.com/comic.php");      
-  };
-}
-
-function date() {
-	  var currentdate = new Date(); 
+function start() {
+  var currentdate = new Date(); 
 var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
                 + currentdate.getFullYear() + " @ "  
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-				return datetime;
-}
-var num1;
-function oninit() {
-if (Cookies.get('Latest') !== null) {
-num1 = Cookies.get('Latest');
-	
-} else {
-
-num1 = prompt("current comic number?")
-Cookies.set('Latest', num1);
-start();
-}
-}
-function start() {
-  console.log(date());
-  console.log('start');
-  document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + Cookies.get('Latest') + '.jpg';
-
+  console.log(datetime);
+  document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 }
   
 async function getAgain() {
  await sleep(300000);
-	console.log('getagain async');
-console.log(date() + " loaded");
- document.getElementById("img").src = document.getElementById("img").src;
+  var currentdate = new Date(); 
+var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+  document.getElementById("img").src = document.getElementById("img").src;
+  console.log("loaded " + datetime);
 }
-
+var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
    
 function done() {
- var comic = num1;
- num1 = num1 + 1;
- Cookies.set('Latest ', num1 );
-console.log('done' + num1 + Cookies.get('Latest'));
-// notification_api(comic);
- start();
+ var comic = document.getElementById('txt').value;
+   notification_api(comic);
 }
-
-
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-
-
+async function testalert() {
+  await sleep(300000);
+  alert("test"); 
+  
+  
+ 
+}
 </script>
