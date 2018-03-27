@@ -34,7 +34,7 @@
 <button onclick=start()>start testing</button>
 
 <img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="done();" width=10px height=10px>
-
+<div id=logBox>
 </div>
 
 <script>
@@ -47,6 +47,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
+  document.getElementById("logBox").innerHTML = "<p>" + datetime + "</p>";
   console.log(datetime);
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 }
@@ -60,6 +61,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
+   document.getElementById("logBox").innerHTML = "<p>" + datetime + "</p>";
   document.getElementById("img").src = document.getElementById("img").src;
   console.log("loaded " + datetime);
 }
