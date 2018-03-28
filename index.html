@@ -44,8 +44,10 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-  document.getElementById("logBox").insertAdjacentHTML('beforeend', datetime + "<br>");
-  console.log(datetime);
+  var WestEuropeTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Copenhagen",
+                                    timeZoneName: "short"}) + " Western European Time";
+  document.getElementById("logBox").insertAdjacentHTML('beforeend', datetime + " - " + WestEuropeTime + "<br>");
+  console.log(datetime + " - " + WestEuropeTime);
   document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
 }
   
@@ -58,13 +60,28 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getHours() + ":"  
                 + currentdate.getMinutes() + ":" 
                 + currentdate.getSeconds();
-   document.getElementById("logBox").insertAdjacentHTML('beforeend', 'Loaded ' + datetime + "<br>");
+  var WestEuropeTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Copenhagen",
+                                    timeZoneName: "short"}) + " Western European Time";
+  document.getElementById("logBox").insertAdjacentHTML('beforeend', "Loaded - Failed - " + datetime + " - " + WestEuropeTime + "<br>");
+  console.log(datetime + " - " + WestEuropeTime);
   document.getElementById("img").src = document.getElementById("img").src;
-  console.log("Loaded " + datetime);
+  console.warn("Loaded - Failed - " + datetime + " - " WestEuropeTime);
 }
 var url = 'https://sssscomic.com/comicpages/' + document.getElementById('txt').value + '.jpg';
    
 function done() {
+    var currentdate = new Date(); 
+var datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
+  var WestEuropeTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Copenhagen",
+                                    timeZoneName: "short"}) + " Western European Time";
+  document.getElementById("logBox").insertAdjacentHTML('beforeend', "Loaded - Success - " + datetime + " - " + WestEuropeTime + "<br>");
+  console.log(datetime + " - " + WestEuropeTime);
+  
  var comic = document.getElementById('txt').value;
    notification_api(comic);
 }
