@@ -62,7 +62,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getSeconds();
   var WestEuropeTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Copenhagen",
                                     timeZoneName: "short"}) + " Western European Time";
-  document.getElementById("logBox").insertAdjacentHTML('beforeend', "Loaded - Failed - " + datetime + " - " + WestEuropeTime + "<br>");
+  document.getElementById("logBox").insertAdjacentHTML('beforeend',  "<span style='color: red'>" + "Loaded - Failed"+ '</span>' + " - " + datetime + " - " + WestEuropeTime + "<br>");
   console.log(datetime + " - " + WestEuropeTime);
   document.getElementById("img").src = document.getElementById("img").src;
   console.warn("Loaded - Failed - " + datetime + " - " + WestEuropeTime);
@@ -79,7 +79,7 @@ var datetime = currentdate.getDate() + "/"
                 + currentdate.getSeconds();
   var WestEuropeTime = new Date().toLocaleString("en-GB", {timeZone: "Europe/Copenhagen",
                                     timeZoneName: "short"}) + " Western European Time";
-  document.getElementById("logBox").insertAdjacentHTML('beforeend', "Loaded - Success - " + datetime + " - " + WestEuropeTime + "<br>");
+  document.getElementById("logBox").insertAdjacentHTML('beforeend', "<span style='color: green'>" + "Loaded - Success" + '</span' + " - " + datetime + " - " + WestEuropeTime + "<br>");
   console.log(datetime + " - " + WestEuropeTime);
   
  var comic = document.getElementById('txt').value;
