@@ -53,7 +53,7 @@ var datetime = currentdate.getDate() + "/"
 }
   
 async function getAgain() {
-    var time = document.getElementById("sectime")*1000;
+    var time = document.getElementById("sectime").value*1000;
   time = Number(time);
  await sleep(time);
   var currentdate = new Date(); 
