@@ -27,7 +27,8 @@
 
 
 
-<input type=text id=txt>
+<input type=text id=txt title="Comic Number" placeholder="Comic Number">
+<input type=text id=sectime value=180 title="time in seconds between checks">
 <button onclick=start()>start testing</button>
 
 <img id=img src="https://sssscomic.com/comicpages/100.jpg" onerror=getAgain(); onload="done();" width=10px height=10px>
@@ -52,7 +53,8 @@ var datetime = currentdate.getDate() + "/"
 }
   
 async function getAgain() {
- await sleep(180000);
+    var time = document.getElementById("sectime")*1000;
+ await sleep(time);
   var currentdate = new Date(); 
 var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
@@ -89,7 +91,8 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 async function testalert() {
-  await sleep(300000);
+var time = document.getElementById("sectime")*1000;
+  await sleep(time);
   alert("test"); 
   
   
