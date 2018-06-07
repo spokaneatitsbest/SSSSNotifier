@@ -31,17 +31,21 @@
 
 
 
-<input type=text id=txt title="Comic Number" placeholder="Comic Number">
-<input type=text id=sectime value=180 title="time in seconds between checks">
+<input type=text id=txt title="Comic Number" placeholder="Comic Number" onchange="Cookies.set('Last', document.getElementById('txt').value)">
+<input type=text id=sectime value=180 title="time in seconds between checks" >
 <button onclick=start()>start testing</button>
 
-<img id=img src="https://sssscomic.com/comicpages/1.jpg" onerror=getAgain(); onload="done();" width=10px height=10px>
+<img id=img src="https://sssscomic.com/comicpages/1.jpg" onerror='getAgain()' onload='done()' width=10px height=10px>
 <div id=logBox>
 </div>
 
 <script>
-  
+var lastcomic = Cookies.get('Last');
+document.getElementById('txt').value = lastcomic;
+document.getElementById('img').src = 'https://sssscomic.com/comicpages/' + lastcomic + '.jpg';
+console.log('hi');
 function start() {
+
   var currentdate = new Date(); 
 var datetime = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/" 
